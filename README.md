@@ -1,4 +1,4 @@
-# imgur-public-profile
+# Imgur Public Profile
 
 ## Project setup
 ```
