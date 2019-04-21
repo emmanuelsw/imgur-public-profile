@@ -1,23 +1,24 @@
 <template>
   <div>
+
     <div class="logo">
-      <img alt="imgur logo" src="../assets/imgur.jpg">
-      <h1>Imgur Public Profile</h1>
+      <img alt="imgur logo" src="../assets/imgur.svg">
+      <p class="heading has-text-white is-size-6 has-text-weight-semibold">Public Profile</p>
     </div>
-    <div class="input">
-      <a-form layout="inline">
-        <a-form-item>
-          <a-input v-model="username" class="username" size="large" placeholder="Search by username">
-            <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
-          </a-input>
-        </a-form-item>
-        <a-form-item>
-          <a-button @click="search" size="large" type="primary" :loading="loading" :disabled="!username">
-            Search
-          </a-button>
-        </a-form-item>
-      </a-form>
+
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half">
+        <div class="box">
+          <b-field grouped>
+            <b-input v-model="username" placeholder="Search by username" size="is-large" icon="account" expanded></b-input>
+            <p class="control">
+              <b-button @click="search" size="is-large" type="is-success" icon-left="magnify">Search</b-button>
+            </p>
+          </b-field>
+        </div>
+      </div>
     </div>
+
   </div>
 
 </template>
@@ -28,7 +29,7 @@ export default {
   data() {
     return {
       loading: false,
-      username: ''
+      username: '' 
     }
   },
   methods: {
@@ -40,24 +41,17 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Nunito:700');
 .logo {
-  padding-top: 100px; 
+  padding-top: 200px;
+  padding-bottom: 100px;
 }
 .logo img {
-  width: 150px;
+  width: 180px;
 }
 .logo h1 {
-  font-family: 'Nunito', sans-serif;
   font-size: 36px;
   padding-top: 10px;
   color: #434343;
-}
-.input {
-  padding-top: 80px;
-}
-.username {
-  width: 400px !important;
 }
 </style>
 

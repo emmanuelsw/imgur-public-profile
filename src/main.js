@@ -1,12 +1,13 @@
 import Vue from 'vue'
-import Antd from 'ant-design-vue'
 import App from './App'
-import 'ant-design-vue/dist/antd.css'
 import router from './router'
 import store from './store'
 
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+
 Vue.config.productionTip = false
-Vue.use(Antd)
+Vue.use(Buefy)
 
 new Vue({
   router,

@@ -11,4 +11,11 @@
   text-align: center;
   color: #2c3e50;
 }
+body {
+  background: linear-gradient(#061234,#1e2230);
+  min-height: 100vh;
+}
+.input, .taginput .taginput-container.is-focusable, .textarea {
+  box-shadow: none !important;
+}
 </style>
