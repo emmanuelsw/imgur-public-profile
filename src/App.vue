@@ -18,4 +18,10 @@ body {
 .input, .taginput .taginput-container.is-focusable, .textarea {
   box-shadow: none !important;
 }
+.green {
+  background-color: #1AB76F !important;
+}
+.green:hover {
+  background-color: #34BE7D !important;
+}
 </style>

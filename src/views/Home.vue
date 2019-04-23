@@ -12,7 +12,7 @@
           <b-field grouped>
             <b-input v-model="username" placeholder="Search by username" size="is-large" icon="account" expanded></b-input>
             <p class="control">
-              <b-button @click="search" size="is-large" type="is-success" icon-left="magnify">Search</b-button>
+              <b-button @click="search" class="green" size="is-large" type="is-success" icon-left="magnify">Search</b-button>
             </p>
           </b-field>
         </div>
@@ -20,7 +20,6 @@
     </div>
 
   </div>
-
 </template>
 
 <script>
