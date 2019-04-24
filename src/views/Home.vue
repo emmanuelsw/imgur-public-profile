@@ -12,7 +12,7 @@
           <b-field grouped>
             <b-input v-model="username" placeholder="Search by username" size="is-large" icon="account" expanded></b-input>
             <p class="control">
-              <b-button @click="search" class="green" size="is-large" type="is-success" icon-left="magnify">Search</b-button>
+              <b-button @click="search" :loading="loading" class="green" size="is-large" type="is-success" icon-left="magnify">Search</b-button>
             </p>
           </b-field>
         </div>
@@ -33,6 +33,16 @@ export default {
   },
   methods: {
     search() {
+      if (!this.username) {
+        this.$notification.open({
+          duration: 3000,
+          closable: false,
+          message: `Username can't be blank.`,
+          position: 'is-top',
+          type: 'is-danger'
+        })
+        return
+      }
       this.loading = true
     }
   }
