@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Set in .env.local
-const TOKEN = process.env.VUE_APP_IMGUR_TOKEN
+const CLIENT_ID = process.env.VUE_APP_IMGUR_CLIENT_ID
 
 const api = axios.create({
   baseURL: process.env.VUE_APP_API_URL // imgur api endpoint
@@ -12,7 +12,7 @@ export function get({ url, params }) {
     method: 'GET',
     url: url,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`
+      'Authorization': `Client-ID ${CLIENT_ID}`
     }
   }
   if (params) {
@@ -28,7 +28,7 @@ export function post({ url, data }) {
     url: url,
     data: data,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`
+      'Authorization': `Client-ID ${CLIENT_ID}`
     }
   }
   return api(options)
@@ -40,7 +40,7 @@ export function postFile({ url, data }) {
     url: url,
     data: data,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`,
+      'Authorization': `Client-ID ${CLIENT_ID}`,
       'Content-Type': 'multipart/form-data'
     }
   }
@@ -53,7 +53,7 @@ export function put({ url, data }) {
     url: url,
     data: data,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`
+      'Authorization': `Client-ID ${CLIENT_ID}`
     }
   }
   return api(options)
@@ -65,7 +65,7 @@ export function byMethod({ url, method, data }) {
     url: url,
     data: data,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`
+      'Authorization': `Client-ID ${CLIENT_ID}`
     }
   }
   return api(options)
@@ -77,7 +77,7 @@ export function del({ url, data }) {
     url: url,
     data: data,
     headers: {
-      'Authorization': `Bearer ${TOKEN}`
+      'Authorization': `Client-ID ${CLIENT_ID}`
     }
   }
   return api(options)

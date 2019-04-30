@@ -19,12 +19,17 @@
       </div>
     </div>
 
+    <div class="foot">
+      <a href="https://github.com/emmanuelsw">emmanuelsw</a>
+      <b-icon icon="github-circle"></b-icon>
+    </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'Home',
   data() {
     return {
       loading: false,
@@ -44,6 +49,21 @@ export default {
         return
       }
       this.loading = true
+      this.$store.dispatch('search', this.username)
+        .then(() => {
+          this.loading = false
+          this.$router.push({ name: 'albums', params: { username: this.username } })
+        })
+        .catch(err => {
+          this.loading = false
+          this.$notification.open({
+            duration: 3000,
+            closable: false,
+            message: err.data.data.error,
+            position: 'is-top',
+            type: 'is-danger'
+          })
+        })
     }
   }
 }
@@ -52,15 +72,22 @@ export default {
 <style scoped>
 .logo {
   padding-top: 200px;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 }
 .logo img {
   width: 180px;
 }
-.logo h1 {
-  font-size: 36px;
-  padding-top: 10px;
-  color: #434343;
+.foot {
+  width: 100%;
+  position: fixed;
+  bottom: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+.foot a {
+  color: #fff;
+  vertical-align: top;
+  margin-right: 10px;
 }
 </style>
 
