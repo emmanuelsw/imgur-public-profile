@@ -13,7 +13,7 @@
           <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
-                <img :src="`https://i.imgur.com/${album.cover}.jpg`" alt="Placeholder image">
+                <img v-lazy="`https://i.imgur.com/${album.cover}_d.jpg?maxwidth=520&shape=thumb&fidelity=high`" alt="Placeholder image">
               </figure>
             </div>
             <div class="card-content">
