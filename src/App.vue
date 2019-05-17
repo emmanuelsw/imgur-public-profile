@@ -27,4 +27,7 @@ body {
 .green:hover {
   background-color: #34BE7D !important;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>

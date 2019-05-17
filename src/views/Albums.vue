@@ -11,20 +11,25 @@
         <div v-for="(album, index) in albums" :key="index" class="column is-3">
 
           <div class="card">
-            <div class="card-image">
+            <div class="card-image cursor-pointer" @click="openAlbum(album.link)">
               <figure class="image is-4by3">
-                <img v-lazy="`https://i.imgur.com/${album.cover}_d.jpg?maxwidth=520&shape=thumb&fidelity=high`" alt="Placeholder image">
+                <img v-lazy="coverUrl(album.cover)" alt="Cover">
               </figure>
             </div>
             <div class="card-content">
               <div class="content">
-                {{ album.title }}
+                <p>{{ album.title }}</p>
               </div>
             </div>
             <footer class="card-footer">
-              <a href="#" class="card-footer-item">Save</a>
-              <a href="#" class="card-footer-item">Edit</a>
-              <a href="#" class="card-footer-item">Delete</a>
+              <div class="card-footer-item">
+                <b-icon icon="image"></b-icon>
+                <span>{{ album.images_count }}</span>
+              </div>
+              <div class="card-footer-item">
+                <b-icon icon="eye"></b-icon>
+                <span>{{ album.views }}</span>
+              </div>
             </footer>
           </div>
 
@@ -44,6 +49,14 @@ export default {
     ...mapState([
       'albums'
     ])
+  },
+  methods: {
+    coverUrl(url) {
+      return `https://i.imgur.com/${url}_d.jpg?maxwidth=520&shape=thumb&fidelity=high`
+    },
+    openAlbum(url) {
+      window.open(url, '_blank')
+    }
   }
 }
 </script>
@@ -58,5 +71,22 @@ export default {
 }
 .image img {
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.card {
+  border-radius: 5px;
+}
+.card-footer-item span {
+  margin-left: 5px;
+}
+.card-content {
+  padding: .8rem;
+}
+.card-content .content {
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
