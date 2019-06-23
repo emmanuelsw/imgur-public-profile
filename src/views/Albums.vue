@@ -11,14 +11,18 @@
         <div v-for="(album, index) in albums" :key="index" class="column is-3">
 
           <div class="card">
-            <div class="card-image cursor-pointer" @click="openAlbum(album.link)">
-              <figure class="image is-4by3">
-                <img v-lazy="coverUrl(album.cover)" alt="Cover">
-              </figure>
+            <div class="card-image cursor-pointer">
+              <a :href="album.link" target="_blank">
+                <figure class="image is-4by3">
+                  <img v-lazy="coverUrl(album.cover)" alt="cover">
+                </figure>
+              </a>
             </div>
             <div class="card-content">
               <div class="content">
-                <p>{{ album.title }}</p>
+                <a :href="album.link" target="_blank">
+                  <p class="link-title">{{ album.title }}</p>
+                </a>
               </div>
             </div>
             <footer class="card-footer">
@@ -42,9 +46,19 @@
 
 <script>
 import { mapState } from 'vuex'
+import store from '@/store'
 
 export default {
   name: 'Albums',
+  beforeRouteEnter (to, from, next) {
+    console.log(store.state.albums)
+    if (store.state.albums === undefined || store.state.albums.length == 0) {
+      store.dispatch('search', to.params.username)
+      .then(() => next())
+    } else {
+      next()
+    }
+  },
   computed: {
     ...mapState([
       'albums'
@@ -88,5 +102,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.card-content .link-title {
+  color: #061234;
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>
