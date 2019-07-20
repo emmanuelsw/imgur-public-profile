@@ -51,7 +51,6 @@ import store from '@/store'
 export default {
   name: 'Albums',
   beforeRouteEnter (to, from, next) {
-    console.log(store.state.albums)
     if (store.state.albums === undefined || store.state.albums.length == 0) {
       store.dispatch('search', to.params.username)
       .then(() => next())
